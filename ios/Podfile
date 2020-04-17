@@ -44,8 +44,8 @@ def flipper_post_install(installer)
   end
 end
 
-target 'moap_pay' do
-  # Pods for moap_pay
+target 'moek_pay' do
+  # Pods for moek_pay
   pod 'FBLazyVector', :path => "../node_modules/react-native/Libraries/FBLazyVector"
   pod 'FBReactNativeSpec', :path => "../node_modules/react-native/Libraries/FBReactNativeSpec"
   pod 'RCTRequired', :path => "../node_modules/react-native/Libraries/RCTRequired"
@@ -77,7 +77,7 @@ target 'moap_pay' do
   pod 'glog', :podspec => '../node_modules/react-native/third-party-podspecs/glog.podspec'
   pod 'Folly', :podspec => '../node_modules/react-native/third-party-podspecs/Folly.podspec'
 
-  target 'moap_payTests' do
+  target 'moek_payTests' do
     inherit! :complete
     # Pods for testing
   end
@@ -94,10 +94,10 @@ target 'moap_pay' do
   end
 end
 
-target 'moap_pay-tvOS' do
-  # Pods for moap_pay-tvOS
+target 'moek_pay-tvOS' do
+  # Pods for moek_pay-tvOS
 
-  target 'moap_pay-tvOSTests' do
+  target 'moek_pay-tvOSTests' do
     inherit! :search_paths
     # Pods for testing
   end

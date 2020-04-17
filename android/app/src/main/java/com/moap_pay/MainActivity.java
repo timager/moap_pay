@@ -1,4 +1,4 @@
-package com.moap_pay;
+package com.moek_pay;
 
 import com.facebook.react.ReactActivity;
 
@@ -10,6 +10,6 @@ public class MainActivity extends ReactActivity {
    */
   @Override
   protected String getMainComponentName() {
-    return "moap_pay";
+    return "moek_pay";
   }
 }

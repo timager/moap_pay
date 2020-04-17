@@ -7,11 +7,11 @@
 #define TIMEOUT_SECONDS 600
 #define TEXT_TO_LOOK_FOR @"Welcome to React"
 
-@interface moap_payTests : XCTestCase
+@interface moek_payTests : XCTestCase
 
 @end
 
-@implementation moap_payTests
+@implementation moek_payTests
 
 - (BOOL)findSubviewInView:(UIView *)view matching:(BOOL(^)(UIView *view))test
 {

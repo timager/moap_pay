@@ -130,7 +130,7 @@ android {
 
     defaultConfig {
         missingDimensionStrategy 'react-native-camera', 'general' // <--- insert this line
-        applicationId "com.moap_pay"
+        applicationId "com.moek_pay"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1

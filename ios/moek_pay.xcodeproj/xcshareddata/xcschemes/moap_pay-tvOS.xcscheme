@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-               BuildableName = "moap_pay.app"
-               BlueprintName = "moap_pay"
-               ReferencedContainer = "container:moap_pay.xcodeproj">
+               BlueprintIdentifier = "2D02E47A1E0B4A5D006451C7"
+               BuildableName = "moek_pay-tvOS.app"
+               BlueprintName = "moek_pay-tvOS"
+               ReferencedContainer = "container:moek_pay.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -32,10 +32,10 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "00E356ED1AD99517003FC87E"
-               BuildableName = "moap_payTests.xctest"
-               BlueprintName = "moap_payTests"
-               ReferencedContainer = "container:moap_pay.xcodeproj">
+               BlueprintIdentifier = "2D02E48F1E0B4A5D006451C7"
+               BuildableName = "moek_pay-tvOSTests.xctest"
+               BlueprintName = "moek_pay-tvOSTests"
+               ReferencedContainer = "container:moek_pay.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -54,10 +54,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "moap_pay.app"
-            BlueprintName = "moap_pay"
-            ReferencedContainer = "container:moap_pay.xcodeproj">
+            BlueprintIdentifier = "2D02E47A1E0B4A5D006451C7"
+            BuildableName = "moek_pay-tvOS.app"
+            BlueprintName = "moek_pay-tvOS"
+            ReferencedContainer = "container:moek_pay.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -71,10 +71,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "moap_pay.app"
-            BlueprintName = "moap_pay"
-            ReferencedContainer = "container:moap_pay.xcodeproj">
+            BlueprintIdentifier = "2D02E47A1E0B4A5D006451C7"
+            BuildableName = "moek_pay-tvOS.app"
+            BlueprintName = "moek_pay-tvOS"
+            ReferencedContainer = "container:moek_pay.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

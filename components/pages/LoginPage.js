@@ -1,11 +1,13 @@
-import {View,Text} from 'react-native';
+import {View, Text, Button} from 'react-native';
 import React, {Component} from 'react';
 import {styles} from '../Styles'
 
 class LoginPage extends Component {
     render() {
         return (
-            <Text style={styles.loginPage}>123</Text>
+            <View style={[styles.heightFull, styles.bgBlue]}>
+                <Button style={styles.defaultFont} title={"123"}/>
+            </View>
         );
     }
 }
