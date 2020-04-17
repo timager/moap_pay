@@ -10,9 +10,9 @@
     "lint": "eslint ."
   },
   "dependencies": {
-    "react": "16.11.0",
-    "react-native": "0.62.2",
-    "react-native-camera": "^3.23.1"
+    "react": "latest",
+    "react-native": "latest",
+    "react-native-camera": "latest"
   },
   "devDependencies": {
     "@babel/core": "7.9.0",
