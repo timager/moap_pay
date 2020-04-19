@@ -1,9 +1,18 @@
-import {View, Button,TouchableOpacity,Text } from 'react-native';
+import {View, Button, TouchableOpacity, Text, ImageBackground} from 'react-native';
 import React, {PureComponent} from 'react';
-import {styles} from '../Styles'
-import { RNCamera } from 'react-native-camera';
+import {styles} from '../Styles';
+import {RNCamera} from 'react-native-camera';
 
 class CameraPage extends PureComponent {
+
+    constructor() {
+        super();
+        this.state = {
+            url: ''
+        }
+    }
+
+
     render() {
         return (
             <View style={styles.container}>
@@ -17,16 +26,20 @@ class CameraPage extends PureComponent {
                     flashMode={RNCamera.Constants.FlashMode.auto}
                     autoFocus={true}
                 />
-                <View style={styles.snapButton}>
-                    <Button onPress={this.takePicture.bind(this)} title={"Отправить"}/>
-                </View>
+                <ImageBackground source={this.state.url} style={styles.image}>
+                    <View style={styles.snapButton}>
+                        <Button onPress={this.takePicture.bind(this)} title={'Отправить'}/>
+                    </View>
+                </ImageBackground>
             </View>
         );
     }
+
     takePicture = async () => {
         if (this.camera) {
-            const options = { base64: true };
-            await this.camera.takePictureAsync(options);
+            const options = {base64: true};
+            let url = await this.camera.takePictureAsync(options);
+            this.setState({url: url});
         }
     };
 }

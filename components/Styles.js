@@ -53,6 +53,11 @@ export let styles = StyleSheet.create(
         snapButton:{
             alignItems:'center',
             marginVertical:50,
-        }
+        },
+        image: {
+            flex: 1,
+            resizeMode: "cover",
+            justifyContent: "center"
+        },
     },
 );
