@@ -4,6 +4,9 @@ const lightBlue = '#d4d9ea';
 
 export let styles = StyleSheet.create(
     {
+        h200:{
+            height: 100,
+        },
         bgColor: {
             backgroundColor: lightBlue,
         },
