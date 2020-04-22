@@ -78,6 +78,8 @@ target 'moek_pay' do
   pod 'Folly', :podspec => '../node_modules/react-native/third-party-podspecs/Folly.podspec'
 
 
+  pod 'react-native-image-base64', :path => '../node_modules/react-native-image-base64'
+
   target 'moek_payTests' do
     inherit! :complete
     # Pods for testing

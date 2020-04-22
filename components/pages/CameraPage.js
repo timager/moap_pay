@@ -3,7 +3,6 @@ import React, {PureComponent} from 'react';
 import {styles} from '../Styles';
 import {RNCamera} from 'react-native-camera';
 import ImageEditor from "@react-native-community/image-editor";
-// import ImgToBase64 from 'react-native-image-base64';
 
 class CameraPage extends PureComponent {
 
@@ -27,8 +26,8 @@ class CameraPage extends PureComponent {
                         }}
                         captureAudio={false}
                         ratio={"1:1"}
-                        rectOfInterest={{x: 0, y: 0.25, width: 1, height: 0.3}}
-                        cameraViewDimensions = {{width:500, height: 500}}
+                        // rectOfInterest={{x: 0, y: 0.25, width: 1, height: 0.3}}
+                        // cameraViewDimensions = {{width:500, height: 500}}
                         style={styles.camera}
                         type={RNCamera.Constants.Type.back}
                         flashMode={RNCamera.Constants.FlashMode.auto}
