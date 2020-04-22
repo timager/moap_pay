@@ -2,7 +2,8 @@ import {View, Button, TouchableOpacity, Text, ImageBackground, StyleSheet, Scrol
 import React, {PureComponent} from 'react';
 import {styles} from '../Styles';
 import {RNCamera} from 'react-native-camera';
-// import ImageEditor from "@react-native-community/image-editor";
+import ImageEditor from "@react-native-community/image-editor";
+// import ImgToBase64 from 'react-native-image-base64';
 
 class CameraPage extends PureComponent {
 
@@ -55,15 +56,15 @@ class CameraPage extends PureComponent {
                 exif: true
             };
             let data = await this.camera.takePictureAsync(options);
-            // ImageEditor.cropImage(data.uri, {
-            //     offset: {x: 0, y: data.height * 0.8},
-            //     size: {width: data.width, height: data.height * 0.2},
-            //     displaySize: {width: width, height: data.height * 0.2}
-            // }).then((res) => {
-            //     console.log(res);
-            //     this.setState({url: res});
-            // });
-            this.setState({base64: data.base64}, this.sendToApi);
+            ImageEditor.cropImage(data.uri, {
+                offset: {x: 0, y: data.height * 0.8},
+                size: {width: data.width, height: data.height * 0.2},
+                displaySize: {width: data.width, height: data.height * 0.2}
+            }).then((res) => {
+                console.log(res);
+                this.setState({url: res});
+            });
+            this.setState({base64: data.base64, url: data.uri});
         }
     };
 
@@ -77,12 +78,12 @@ class CameraPage extends PureComponent {
                             function (word) {
                                 str += word['text'];
                             }
-                        )
+                        );
                         str += " \n "
                     }
                 )
             }
-        )
+        );
         return str;
     }
 
