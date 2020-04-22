@@ -44,22 +44,24 @@ export let styles = StyleSheet.create(
             marginBottom: 20
         },
         container: {
+            // overflow: 'hidden',
             // flex: 1,
             // flexDirection: 'column',
             // backgroundColor: lightBlue,
         },
         camera: {
+            overflow: "hidden",
             width:  Dimensions.get("window").width,
             height: Dimensions.get("window").width*0.2
         },
         snapButton:{
             alignItems:'center',
-            marginVertical:50,
+            marginVertical:500,
         },
         image: {
-            flex: 1,
-            resizeMode: "cover",
-            justifyContent: "center"
+            // flex: 1,
+            // resizeMode: "cover",
+            // justifyContent: "center"
         },
     },
 );

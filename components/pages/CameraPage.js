@@ -2,6 +2,7 @@ import {View, Button, TouchableOpacity, Text, ImageBackground, StyleSheet, Scrol
 import React, {PureComponent} from 'react';
 import {styles} from '../Styles';
 import {RNCamera} from 'react-native-camera';
+// import ImageEditor from "@react-native-community/image-editor";
 
 class CameraPage extends PureComponent {
 
@@ -17,19 +18,22 @@ class CameraPage extends PureComponent {
 
     render() {
         return (
-            <View style={styles.container}>
-                <RNCamera
-                    ref={ref => {
-                        this.camera = ref;
-                    }}
-                    captureAudio={false}
-                    // ratio={"1:1"}
-                    // rectOfInterest={{x: 0, y: 0.25, width: 1, height: 0.3}}
-                    style={styles.camera}
-                    type={RNCamera.Constants.Type.back}
-                    flashMode={RNCamera.Constants.FlashMode.auto}
-                    autoFocus={true}
-                />
+            <View>
+                <View style={styles.container}>
+                    <RNCamera
+                        ref={ref => {
+                            this.camera = ref;
+                        }}
+                        captureAudio={false}
+                        ratio={"1:1"}
+                        rectOfInterest={{x: 0, y: 0.25, width: 1, height: 0.3}}
+                        cameraViewDimensions = {{width:500, height: 500}}
+                        style={styles.camera}
+                        type={RNCamera.Constants.Type.back}
+                        flashMode={RNCamera.Constants.FlashMode.auto}
+                        autoFocus={true}
+                    />
+                </View>
                 <ImageBackground source={this.state.url} style={styles.image}>
                     <View style={styles.snapButton}>
                         <Button onPress={this.takePicture.bind(this)} title={'Отправить'}/>
@@ -51,7 +55,15 @@ class CameraPage extends PureComponent {
                 exif: true
             };
             let data = await this.camera.takePictureAsync(options);
-            this.setState({url: data, base64: data.base64}, this.sendToApi);
+            // ImageEditor.cropImage(data.uri, {
+            //     offset: {x: 0, y: data.height * 0.8},
+            //     size: {width: data.width, height: data.height * 0.2},
+            //     displaySize: {width: width, height: data.height * 0.2}
+            // }).then((res) => {
+            //     console.log(res);
+            //     this.setState({url: res});
+            // });
+            this.setState({base64: data.base64}, this.sendToApi);
         }
     };
 
