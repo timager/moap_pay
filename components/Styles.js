@@ -44,14 +44,13 @@ export let styles = StyleSheet.create(
             marginBottom: 20
         },
         container: {
-            flex: 1,
-            flexDirection: 'column',
-            backgroundColor: lightBlue,
+            // flex: 1,
+            // flexDirection: 'column',
+            // backgroundColor: lightBlue,
         },
         camera: {
-            flex: 1,
-            justifyContent: 'flex-end',
-            alignItems: 'center',
+            width:  Dimensions.get("window").width,
+            height: Dimensions.get("window").width*0.2
         },
         snapButton:{
             alignItems:'center',

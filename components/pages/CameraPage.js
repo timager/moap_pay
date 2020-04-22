@@ -23,6 +23,8 @@ class CameraPage extends PureComponent {
                         this.camera = ref;
                     }}
                     captureAudio={false}
+                    // ratio={"1:1"}
+                    // rectOfInterest={{x: 0, y: 0.25, width: 1, height: 0.3}}
                     style={styles.camera}
                     type={RNCamera.Constants.Type.back}
                     flashMode={RNCamera.Constants.FlashMode.auto}
@@ -42,15 +44,39 @@ class CameraPage extends PureComponent {
 
     takePicture = async () => {
         if (this.camera) {
-            const options = {base64: true, quality: 0.5};
+            const options = {
+                base64: true,
+                quality: 0.5,
+                fixOrientation: true,
+                exif: true
+            };
             let data = await this.camera.takePictureAsync(options);
             this.setState({url: data, base64: data.base64}, this.sendToApi);
         }
     };
 
+    makeResponseStr(response) {
+        let str = '';
+        JSON.parse(response)['results'][0]['results'][0]['textDetection']['pages'][0]['blocks'].forEach(
+            function (block) {
+                block['lines'].forEach(
+                    function (line) {
+                        line['words'].forEach(
+                            function (word) {
+                                str += word['text'];
+                            }
+                        )
+                        str += " \n "
+                    }
+                )
+            }
+        )
+        return str;
+    }
+
     sendToApi() {
+        this.setState({response: 'loading'})
         let body = JSON.stringify({
-            // "folderId": "b1gh07ni0nkc3fvjr18g",
             "analyze_specs": [{
                 "content": this.state.base64,
                 "features": [{
@@ -63,6 +89,7 @@ class CameraPage extends PureComponent {
         });
         fetch(
             'https://vision.api.cloud.yandex.net/vision/v1/batchAnalyze',
+            // 'https://webhook.site/3a023efd-471a-4b85-bf93-952ed0c10f26',
             {
                 method: "POST",
                 headers: {
@@ -73,7 +100,7 @@ class CameraPage extends PureComponent {
             }
         )
             .then((response) => response.text())
-            .then((response) => this.setState({response: response}))//.results[0].results
+            .then((response) => this.setState({response: this.makeResponseStr(response)}))//.results[0].results
     }
 }
 
