@@ -3,6 +3,7 @@ import React, {PureComponent} from 'react';
 import {styles} from '../Styles';
 import {RNCamera} from 'react-native-camera';
 import ImageEditor from "@react-native-community/image-editor";
+import ImgToBase64 from 'react-native-image-base64';
 
 class CameraPage extends PureComponent {
 
@@ -61,6 +62,10 @@ class CameraPage extends PureComponent {
                 displaySize: {width: data.width, height: data.height * 0.2}
             }).then((res) => {
                 console.log(res);
+                ImgToBase64.getBase64String(res)
+                    .then(base64String => {
+                        console.log(base64String)
+                    });
                 this.setState({url: res});
             });
             this.setState({base64: data.base64, url: data.uri});
