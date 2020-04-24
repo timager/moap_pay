@@ -1,11 +1,11 @@
-import {View, Button, TouchableOpacity, Text, ImageBackground, StyleSheet, ScrollView} from 'react-native';
-import React, {PureComponent} from 'react';
+import {View, Button, Text, ImageBackground, ScrollView} from 'react-native';
+import React, {Component} from 'react';
 import {styles} from '../Styles';
 import {RNCamera} from 'react-native-camera';
 import ImageEditor from "@react-native-community/image-editor";
 import ImgToBase64 from 'react-native-image-base64';
 
-class CameraPage extends PureComponent {
+class CameraPage extends Component {
 
     constructor() {
         super();
@@ -30,7 +30,7 @@ class CameraPage extends PureComponent {
                         // rectOfInterest={{x: 0, y: 0.25, width: 1, height: 0.3}}
                         // cameraViewDimensions = {{width:500, height: 500}}
                         style={styles.camera}
-                        type={RNCamera.Constants.Type.front}
+                        type={RNCamera.Constants.Type.back}
                         flashMode={RNCamera.Constants.FlashMode.auto}
                         autoFocus={true}
                     />
@@ -64,7 +64,7 @@ class CameraPage extends PureComponent {
                 console.log(res);
                 ImgToBase64.getBase64String(res)
                     .then(base64String => {
-                        console.log(base64String)
+                        this.setState({base64: base64String}, this.sendToApi)
                     });
                 this.setState({url: res});
             });
@@ -73,21 +73,28 @@ class CameraPage extends PureComponent {
     };
 
     makeResponseStr(response) {
+        console.log(response)
         let str = '';
-        JSON.parse(response)['results'][0]['results'][0]['textDetection']['pages'][0]['blocks'].forEach(
-            function (block) {
-                block['lines'].forEach(
-                    function (line) {
-                        line['words'].forEach(
-                            function (word) {
-                                str += word['text'];
-                            }
-                        );
-                        str += " \n "
-                    }
-                )
-            }
-        );
+        let page = JSON.parse(response)['results'][0]['results'][0]['textDetection']['pages'][0];
+        if ('blocks' in page){
+            page['blocks'].forEach(
+                function (block) {
+                    block['lines'].forEach(
+                        function (line) {
+                            line['words'].forEach(
+                                function (word) {
+                                    str += word['text'];
+                                }
+                            );
+                            str += " \n "
+                        }
+                    )
+                }
+            );
+        }
+        else{
+            str = 'Ничего не найдено'
+        }
         return str;
     }
 
