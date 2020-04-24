@@ -36,10 +36,16 @@ class CameraPage extends Component {
                         autoFocus={true}
                     />
                 </View>
-                    <View style={styles.snapButton}>
-                        <Button onPress={this.takePicture.bind(this)} title={'Отправить'}/>
-                    </View>
-                {this.state.base64 ? <Image style={{width: Dimensions.get("window").width, height: Dimensions.get("window").width*0.3, resizeMode: "center", borderWidth: 1, borderColor: 'red'}} source={{uri: "data:image/jpeg;base64," + this.state.base64}}/> : <Text/>}
+                <View style={styles.snapButton}>
+                    <Button onPress={this.takePicture.bind(this)} title={'Отправить'}/>
+                </View>
+                {this.state.base64 ? <Image style={{
+                    width: Dimensions.get("window").width,
+                    height: Dimensions.get("window").width * 0.3,
+                    resizeMode: "center",
+                    borderWidth: 1,
+                    borderColor: 'red'
+                }} source={{uri: "data:image/jpeg;base64," + this.state.base64}}/> : <Text/>}
 
                 <ScrollView style={styles.h200}>
                     <Text style={styles.bgColor}>{this.state.response}</Text>
@@ -57,9 +63,9 @@ class CameraPage extends Component {
                 exif: true
             };
             let data = await this.camera.takePictureAsync(options);
-            let newWidth = data.width*0.78;
+            let newWidth = data.width * 0.78;
             ImageEditor.cropImage(data.uri, {
-                offset: {x: (data.width-newWidth)/2, y: 0},
+                offset: {x: (data.width - newWidth) / 2, y: 0},
                 size: {width: newWidth, height: newWidth * 0.3},
                 displaySize: {width: newWidth, height: newWidth * 0.3}
             }).then((res) => {
@@ -73,10 +79,17 @@ class CameraPage extends Component {
         }
     };
 
+    checkResult() {
+        let res = this.state.response.replace(/[^0-9]/g, '');
+        if (res.length > 0) {
+            this.props.navigation.navigate('ConfirmPage', {res: res})
+        }
+    }
+
     makeResponseStr(response) {
         let str = '';
         let page = JSON.parse(response)['results'][0]['results'][0]['textDetection']['pages'][0];
-        if ('blocks' in page){
+        if ('blocks' in page) {
             page['blocks'].forEach(
                 function (block) {
                     block['lines'].forEach(
@@ -91,8 +104,7 @@ class CameraPage extends Component {
                     )
                 }
             );
-        }
-        else{
+        } else {
             str = 'Ничего не найдено'
         }
         return str;
@@ -126,7 +138,7 @@ class CameraPage extends Component {
             }
         )
             .then((response) => response.text())
-            .then((response) => this.setState({response: this.makeResponseStr(response)}))//.results[0].results
+            .then((response) => this.setState({response: this.makeResponseStr(response)}, this.checkResult))//.results[0].results
     }
 }
 
