@@ -56,7 +56,7 @@ export let styles = StyleSheet.create(
         },
         snapButton:{
             alignItems:'center',
-            marginVertical:500,
+            marginVertical:10,
         },
         image: {
             // flex: 1,
