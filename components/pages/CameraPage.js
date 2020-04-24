@@ -4,6 +4,7 @@ import {styles} from '../Styles';
 import {RNCamera} from 'react-native-camera';
 import ImageEditor from "@react-native-community/image-editor";
 import ImgToBase64 from 'react-native-image-base64';
+import {Image} from 'react-native';
 
 class CameraPage extends Component {
 
@@ -11,7 +12,7 @@ class CameraPage extends Component {
         super();
         this.state = {
             url: '',
-            base64: '',
+            base64: null,
             response: "wait"
         }
     }
@@ -27,19 +28,19 @@ class CameraPage extends Component {
                         }}
                         captureAudio={false}
                         // ratio={"1:1"}
-                        // rectOfInterest={{x: 0, y: 0.25, width: 1, height: 0.3}}
-                        // cameraViewDimensions = {{width:500, height: 500}}
+                        // rectOfInterest={{x: 0, y: 0, width: 1, height: 0.3}}
+                        // cameraViewDimensions = {{width:Dimensions.get("window").width, height: Dimensions.get("window").width*0.3}}
                         style={styles.camera}
                         type={RNCamera.Constants.Type.back}
                         flashMode={RNCamera.Constants.FlashMode.auto}
                         autoFocus={true}
                     />
                 </View>
-                <ImageBackground source={this.state.url} style={styles.image}>
                     <View style={styles.snapButton}>
                         <Button onPress={this.takePicture.bind(this)} title={'Отправить'}/>
                     </View>
-                </ImageBackground>
+                {this.state.base64 ? <Image style={{width: Dimensions.get("window").width, height: Dimensions.get("window").width*0.3, resizeMode: "center", borderWidth: 1, borderColor: 'red'}} source={{uri: "data:image/jpeg;base64," + this.state.base64}}/> : <Text/>}
+
                 <ScrollView style={styles.h200}>
                     <Text style={styles.bgColor}>{this.state.response}</Text>
                 </ScrollView>
@@ -56,19 +57,19 @@ class CameraPage extends Component {
                 exif: true
             };
             let data = await this.camera.takePictureAsync(options);
+            let newWidth = data.width*0.78;
             ImageEditor.cropImage(data.uri, {
-                offset: {x: 0, y: data.height * 0.8},
-                size: {width: data.width, height: data.height * 0.2},
-                displaySize: {width: data.width, height: data.height * 0.2}
+                offset: {x: (data.width-newWidth)/2, y: 0},
+                size: {width: newWidth, height: newWidth * 0.3},
+                displaySize: {width: newWidth, height: newWidth * 0.3}
             }).then((res) => {
                 console.log(res);
                 ImgToBase64.getBase64String(res)
                     .then(base64String => {
                         this.setState({base64: base64String}, this.sendToApi)
                     });
-                this.setState({url: res});
             });
-            this.setState({base64: data.base64, url: data.uri});
+            // this.setState({base64: data.base64, url: data.uri});
         }
     };
 
