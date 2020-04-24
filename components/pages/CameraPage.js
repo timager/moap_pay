@@ -1,4 +1,4 @@
-import {View, Button, Text, ImageBackground, ScrollView} from 'react-native';
+import {View, Button, Text, ScrollView, Dimensions} from 'react-native';
 import React, {Component} from 'react';
 import {styles} from '../Styles';
 import {RNCamera} from 'react-native-camera';
@@ -103,10 +103,12 @@ class CameraPage extends Component {
         let body = JSON.stringify({
             "analyze_specs": [{
                 "content": this.state.base64,
+                "mime_type": "image/jpeg",
                 "features": [{
                     "type": "TEXT_DETECTION",
                     "text_detection_config": {
-                        "language_codes": ["ru"]
+                        "language_codes": ["ru", "en"],
+                        "model": "line"
                     }
                 }]
             }]
