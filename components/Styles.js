@@ -4,7 +4,7 @@ const lightBlue = '#d4d9ea';
 
 export let styles = StyleSheet.create(
     {
-        h200:{
+        h200: {
             height: 100,
         },
         bgColor: {
@@ -44,19 +44,16 @@ export let styles = StyleSheet.create(
             marginBottom: 20
         },
         container: {
-            // overflow: 'hidden',
-            // flex: 1,
-            // flexDirection: 'column',
-            // backgroundColor: lightBlue,
+            height: Dimensions.get("window").width * 0.3,
+            overflow: 'hidden'
         },
         camera: {
-            overflow: "hidden",
-            width:  Dimensions.get("window").width,
-            height: Dimensions.get("window").width*0.2
+
+            height: Dimensions.get("window").height
         },
-        snapButton:{
-            alignItems:'center',
-            marginVertical:10,
+        snapButton: {
+            alignItems: 'center',
+            marginVertical: 10,
         },
         image: {
             // flex: 1,

@@ -26,11 +26,11 @@ class CameraPage extends PureComponent {
                             this.camera = ref;
                         }}
                         captureAudio={false}
-                        ratio={"1:1"}
+                        // ratio={"1:1"}
                         // rectOfInterest={{x: 0, y: 0.25, width: 1, height: 0.3}}
                         // cameraViewDimensions = {{width:500, height: 500}}
                         style={styles.camera}
-                        type={RNCamera.Constants.Type.back}
+                        type={RNCamera.Constants.Type.front}
                         flashMode={RNCamera.Constants.FlashMode.auto}
                         autoFocus={true}
                     />
