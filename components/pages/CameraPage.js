@@ -73,7 +73,6 @@ class CameraPage extends Component {
     };
 
     makeResponseStr(response) {
-        console.log(response)
         let str = '';
         let page = JSON.parse(response)['results'][0]['results'][0]['textDetection']['pages'][0];
         if ('blocks' in page){
