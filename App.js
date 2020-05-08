@@ -6,21 +6,22 @@ import {createStackNavigator} from '@react-navigation/stack';
 import HomePage from "./components/pages/HomePage";
 import CameraPage from "./components/pages/CameraPage";
 import ConfirmPage from "./components/pages/ConfirmPage";
-
 const Stack = createStackNavigator();
 
 class App extends Component {
     render() {
+        let noDisplayNavBar = {
+            title: "",
+            headerStyle: {
+                height: 0,
+            },
+            headerLeft: () => <></>
+        };
         return (
             <NavigationContainer>
                 <Stack.Navigator>
-                    <Stack.Screen name="loginPage" component={LoginPage} options={{
-                        title: "",
-                        headerStyle: {
-                            height: 0,
-                        },
-                    }}/>
-                    <Stack.Screen name="HomePage" component={HomePage} options={{title: "Главная"}}/>
+                    <Stack.Screen name="loginPage" component={LoginPage} options={noDisplayNavBar}/>
+                    <Stack.Screen name="HomePage" component={HomePage} options={noDisplayNavBar}/>
                     <Stack.Screen name="CameraPage" component={CameraPage} options={{title: "Наведите на счетчик"}}/>
                     <Stack.Screen name="ConfirmPage" component={ConfirmPage} options={{title: "Проверьте данные"}}/>
                 </Stack.Navigator>

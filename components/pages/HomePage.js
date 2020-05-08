@@ -1,13 +1,22 @@
-import {View, Text, Button} from 'react-native';
+import {Image, View} from 'react-native';
 import React, {Component} from 'react';
 import {styles} from '../Styles'
+import AplanaLogo from "../AplanaLogo";
+import CustomButton from "../CustomButton";
+import smile from "../assets/smile.png";
 
 class HomePage extends Component {
     render() {
         return (
-            <View style={[styles.heightFull, styles.bgColor,styles.containerCenter,styles.buttonsList]}>
-                <Text style={styles.mb20}>Привет!</Text>
-                <Button title={"Отправить показания"} onPress={()=>this.props.navigation.navigate("CameraPage")}/>
+            <View style={styles.homePage}>
+                <View style={styles.homePageLogo}>
+                    <AplanaLogo/>
+                </View>
+                <CustomButton text={"Отправить показания"}
+                              backgroundColor={'red'}
+                              onPress={() => this.props.navigation.navigate("CameraPage")}/>
+                <Image style={styles.smileImage}
+                       source={smile}/>
             </View>
         );
     }

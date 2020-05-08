@@ -5,11 +5,30 @@ const green = '#2f9f43';
 
 export let styles = StyleSheet.create(
     {
-        loginPage:{
-            paddingTop: Dimensions.get('window').height*0.25,
-            alignItems:'center',
+        loginPage: {
+            paddingTop: Dimensions.get('window').height * 0.25,
+            alignItems: 'center',
             backgroundColor: 'white',
+            height: Dimensions.get("window").height,
+        },
+        homePage: {
+            paddingLeft: 15,
+            paddingRight: 15,
+            flex: 1,
+            flexDirection: 'column',
             height: Dimensions.get("window").height
+        },
+        homePageLogo: {
+            paddingTop: Dimensions.get("window").height * 0.2,
+            paddingBottom: Dimensions.get("window").height * 0.1,
+            alignItems: 'center',
+        },
+        smileImage: {
+            position: 'absolute',
+            bottom: 0,
+            right: 0,
+            width: Dimensions.get("window").width * 0.5,
+            height: Dimensions.get("window").width * 0.6,
         },
         h200: {
             height: 100,
@@ -29,10 +48,6 @@ export let styles = StyleSheet.create(
             alignItems: 'center',
             justifyContent: 'center'
         },
-        buttonsList: {
-            flex: 1,
-            flexDirection: 'column'
-        },
         form: {
             backgroundColor: 'white',
             width: Dimensions.get("window").width * 0.9,
@@ -49,7 +64,7 @@ export let styles = StyleSheet.create(
             backgroundColor: 'rgba(127,127,127,0.4)',
             color: 'white'
         },
-        inputLabel:{
+        inputLabel: {
             fontSize: 10,
             marginLeft: 25,
             textTransform: 'uppercase'
