@@ -1,14 +1,21 @@
 import {StyleSheet, Dimensions} from 'react-native';
 
 const lightBlue = '#d4d9ea';
+const green = '#2f9f43';
 
 export let styles = StyleSheet.create(
     {
+        loginPage:{
+            paddingTop: Dimensions.get('window').height*0.25,
+            alignItems:'center',
+            backgroundColor: 'white',
+            height: Dimensions.get("window").height
+        },
         h200: {
             height: 100,
         },
         bgColor: {
-            backgroundColor: lightBlue,
+            backgroundColor: 'white',
         },
         heightFull: {
             height: Dimensions.get("window").height
@@ -27,18 +34,38 @@ export let styles = StyleSheet.create(
             flexDirection: 'column'
         },
         form: {
-            backgroundColor: '#84c6ff',
-            width: Dimensions.get("window").width * 0.8,
-            paddingLeft: 20,
-            paddingRight: 20,
+            backgroundColor: 'white',
+            width: Dimensions.get("window").width * 0.9,
             paddingTop: 50,
             paddingBottom: 50,
             borderRadius: 20
         },
         formInput: {
-            borderRadius: 10,
+            borderRadius: 30,
+            paddingLeft: 20,
             marginBottom: 20,
-            backgroundColor: 'white'
+            marginTop: 10,
+            height: 50,
+            backgroundColor: 'rgba(127,127,127,0.4)',
+            color: 'white'
+        },
+        inputLabel:{
+            fontSize: 10,
+            marginLeft: 25,
+            textTransform: 'uppercase'
+        },
+        button: {
+            height: 50,
+            alignItems: 'center',
+            paddingTop: 15,
+            paddingBottom: 15,
+            borderRadius: 30,
+            marginTop: 25,
+            backgroundColor: green,
+        },
+        buttonText: {
+            color: 'white',
+            fontWeight: 'bold'
         },
         mb20: {
             marginBottom: 20

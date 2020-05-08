@@ -14,10 +14,15 @@ class App extends Component {
         return (
             <NavigationContainer>
                 <Stack.Navigator>
-                    <Stack.Screen name="loginPage" component={LoginPage} options={{title:"Авторизация"}}/>
-                    <Stack.Screen name="HomePage" component={HomePage} options={{title:"Главная"}}/>
-                    <Stack.Screen name="CameraPage" component={CameraPage} options={{title:"Наведите на счетчик"}}/>
-                    <Stack.Screen name="ConfirmPage" component={ConfirmPage} options={{title:"Проверьте данные"}}/>
+                    <Stack.Screen name="loginPage" component={LoginPage} options={{
+                        title: "",
+                        headerStyle: {
+                            height: 0,
+                        },
+                    }}/>
+                    <Stack.Screen name="HomePage" component={HomePage} options={{title: "Главная"}}/>
+                    <Stack.Screen name="CameraPage" component={CameraPage} options={{title: "Наведите на счетчик"}}/>
+                    <Stack.Screen name="ConfirmPage" component={ConfirmPage} options={{title: "Проверьте данные"}}/>
                 </Stack.Navigator>
             </NavigationContainer>
         );
