@@ -22,7 +22,7 @@ class CameraPage extends Component {
     render() {
         return (
             <View style={styles.cameraPage}>
-                <View style={styles.container}>
+                <View style={[styles.container, {borderRadius: 30}]}>
                     <RNCamera
                         ref={ref => {
                             this.camera = ref;
@@ -35,7 +35,7 @@ class CameraPage extends Component {
                     />
                 </View>
                 <View style={styles.snapButton}>
-                    <CustomButton onPress={this.takePicture.bind(this)} text={'Сделать снимок'}/>
+                    <CustomButton onPress={this.takePicture.bind(this)} text={'Сделать снимок'} cameraImg={true}/>
                 </View>
                 {this.state.base64 ? <Image style={{
                     width: Dimensions.get("window").width,
