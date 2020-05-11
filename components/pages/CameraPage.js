@@ -11,7 +11,6 @@ class CameraPage extends Component {
     constructor() {
         super();
         this.state = {
-            url: '',
             base64: null,
             response: "wait"
         }
@@ -66,7 +65,6 @@ class CameraPage extends Component {
                 size: {width: newWidth, height: newWidth * 0.3},
                 displaySize: {width: newWidth, height: newWidth * 0.3}
             }).then((res) => {
-                console.log(res);
                 ImgToBase64.getBase64String(res)
                     .then(base64String => {
                         this.setState({base64: base64String}, this.sendToApi)
@@ -107,7 +105,7 @@ class CameraPage extends Component {
     }
 
     sendToApi() {
-        this.setState({response: 'loading'})
+        this.setState({response: 'loading'});
         let body = JSON.stringify({
             "analyze_specs": [{
                 "content": this.state.base64,
