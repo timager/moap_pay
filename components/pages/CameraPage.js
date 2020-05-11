@@ -5,6 +5,8 @@ import {RNCamera} from 'react-native-camera';
 import ImageEditor from "@react-native-community/image-editor";
 import ImgToBase64 from 'react-native-image-base64';
 import {Image} from 'react-native';
+import CustomButton from "../CustomButton";
+import AplanaLogo from "../AplanaLogo";
 
 class CameraPage extends Component {
 
@@ -19,7 +21,7 @@ class CameraPage extends Component {
 
     render() {
         return (
-            <View>
+            <View style={styles.cameraPage}>
                 <View style={styles.container}>
                     <RNCamera
                         ref={ref => {
@@ -33,7 +35,7 @@ class CameraPage extends Component {
                     />
                 </View>
                 <View style={styles.snapButton}>
-                    <Button onPress={this.takePicture.bind(this)} title={'Отправить'}/>
+                    <CustomButton onPress={this.takePicture.bind(this)} text={'Сделать снимок'}/>
                 </View>
                 {this.state.base64 ? <Image style={{
                     width: Dimensions.get("window").width,
@@ -46,6 +48,9 @@ class CameraPage extends Component {
                 <ScrollView style={styles.h200}>
                     <Text style={styles.bgColor}>{this.state.response}</Text>
                 </ScrollView>
+                <View style={styles.containerCenter}>
+                    <AplanaLogo/>
+                </View>
             </View>
         );
     }
