@@ -5,8 +5,10 @@ const green = '#2f9f43';
 
 export let styles = StyleSheet.create(
     {
-        colorGreen: {
-            color: green
+        cameraPage: {
+            paddingLeft: 15,
+            paddingRight: 15,
+            paddingTop: Dimensions.get('window').height * 0.1,
         },
         confirmPage: {
             paddingTop: Dimensions.get('window').height * 0.2,
@@ -108,7 +110,7 @@ export let styles = StyleSheet.create(
             width: Dimensions.get("window").width
         },
         snapButton: {
-            alignItems: 'center',
+            // alignItems: 'center',
             marginVertical: 10,
         },
         image: {
