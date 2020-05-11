@@ -23,7 +23,7 @@ class App extends Component {
                     <Stack.Screen name="loginPage" component={LoginPage} options={noDisplayNavBar}/>
                     <Stack.Screen name="HomePage" component={HomePage} options={noDisplayNavBar}/>
                     <Stack.Screen name="CameraPage" component={CameraPage} options={{title: "Наведите на счетчик"}}/>
-                    <Stack.Screen name="ConfirmPage" component={ConfirmPage} options={{title: "Проверьте данные"}}/>
+                    <Stack.Screen name="ConfirmPage" component={ConfirmPage} options={noDisplayNavBar}/>
                 </Stack.Navigator>
             </NavigationContainer>
         );

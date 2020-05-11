@@ -5,13 +5,26 @@ const green = '#2f9f43';
 
 export let styles = StyleSheet.create(
     {
+        colorGreen: {
+            color: green
+        },
+        confirmPage: {
+            paddingTop: Dimensions.get('window').height * 0.2,
+            paddingLeft: 15,
+            paddingRight: 15,
+        },
+        confirmOkImage: {
+            alignItems: 'center',
+            paddingTop: 30
+        },
         loginPage: {
-            paddingTop: Dimensions.get('window').height * 0.25,
+            paddingTop: Dimensions.get('window').height * 0.2,
             alignItems: 'center',
             backgroundColor: 'white',
             height: Dimensions.get("window").height,
         },
         homePage: {
+            backgroundColor: 'white',
             paddingLeft: 15,
             paddingRight: 15,
             flex: 1,
@@ -56,6 +69,7 @@ export let styles = StyleSheet.create(
             borderRadius: 20
         },
         formInput: {
+            textAlign: 'center',
             borderRadius: 30,
             paddingLeft: 20,
             marginBottom: 20,

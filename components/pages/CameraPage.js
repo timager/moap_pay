@@ -27,9 +27,6 @@ class CameraPage extends Component {
                             this.camera = ref;
                         }}
                         captureAudio={false}
-                        // ratio={"1:1"}
-                        // rectOfInterest={{x: 0, y: 0, width: 1, height: 0.3}}
-                        // cameraViewDimensions = {{width:Dimensions.get("window").width, height: Dimensions.get("window").width*0.3}}
                         style={styles.camera}
                         type={RNCamera.Constants.Type.back}
                         flashMode={RNCamera.Constants.FlashMode.auto}
@@ -75,7 +72,6 @@ class CameraPage extends Component {
                         this.setState({base64: base64String}, this.sendToApi)
                     });
             });
-            // this.setState({base64: data.base64, url: data.uri});
         }
     };
 
@@ -125,10 +121,10 @@ class CameraPage extends Component {
                 }]
             }]
         });
-        fetch('https://webhook.site/d8c74c1d-b13d-4ceb-8414-03137eeabb94', {
-            method: "POST",
-            body: this.state.base64,
-        });
+        // fetch('https://webhook.site/d8c74c1d-b13d-4ceb-8414-03137eeabb94', {
+        //     method: "POST",
+        //     body: this.state.base64,
+        // });
         fetch(
             'https://vision.api.cloud.yandex.net/vision/v1/batchAnalyze',
             // 'https://webhook.site/3a023efd-471a-4b85-bf93-952ed0c10f26',
