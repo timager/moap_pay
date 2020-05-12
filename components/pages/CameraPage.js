@@ -30,6 +30,7 @@ class CameraPage extends Component {
 
 
     render() {
+        let isDisabled = (this.state.response === 1);
         return (
             <View style={styles.cameraPage}>
                 <View style={[styles.container, {borderRadius: 30}]}>
@@ -45,10 +46,14 @@ class CameraPage extends Component {
                     />
                 </View>
                 <View style={styles.snapButton}>
-                    <CustomButton onPress={this.takePicture.bind(this)} text={'Сделать снимок'} cameraImg={true}/>
+                    <CustomButton disabled={isDisabled}
+                                  onPress={this.takePicture.bind(this)} text={'Сделать снимок'}
+                                  cameraImg={true}/>
                 </View>
                 <View>
-                    <Text style={[styles.fetchStatusLabel, this.statusesStyles[this.state.response]]}>{this.statuses[this.state.response]}</Text>
+                    <Text style={[styles.fetchStatusLabel, this.statusesStyles[this.state.response]]}>
+                        {this.statuses[this.state.response]}
+                    </Text>
                 </View>
                 <View style={styles.containerCenter}>
                     <AplanaLogo/>
@@ -58,6 +63,7 @@ class CameraPage extends Component {
     }
 
     takePicture = async () => {
+        this.setState({response: 1});
         if (this.camera) {
             const options = {
                 base64: true,
@@ -84,7 +90,7 @@ class CameraPage extends Component {
         let res = result.replace(/[^0-9]/g, '');
         if (res.length > 0) {
             this.props.navigation.navigate('ConfirmPage', {res: res})
-        }else{
+        } else {
             this.setState({response: 2});
         }
     }
@@ -114,7 +120,6 @@ class CameraPage extends Component {
     }
 
     sendToApi() {
-        this.setState({response: 1});
         let body = JSON.stringify({
             "analyze_specs": [{
                 "content": this.state.base64,

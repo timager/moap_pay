@@ -13,6 +13,7 @@ export let styles = StyleSheet.create(
             backgroundColor: 'red'
         },
         fetchStatusLabel: {
+            marginTop: 30,
             textAlign: 'center',
             color: 'white',
             borderRadius: 30,
@@ -26,6 +27,8 @@ export let styles = StyleSheet.create(
             color: green
         },
         cameraPage: {
+            height: Dimensions.get("window").height,
+            backgroundColor: 'white',
             paddingLeft: 15,
             paddingRight: 15,
             paddingTop: Dimensions.get('window').height * 0.1,

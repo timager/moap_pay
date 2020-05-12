@@ -5,8 +5,11 @@ import camera from "./assets/camera.png";
 
 class CustomButton extends Component {
     render() {
+        let disabled = !!this.props.disabled;
         let buttonStyle = [styles.button]
-        if (this.props.backgroundColor) {
+        if (disabled) {
+            buttonStyle.push(styles.bgGrey);
+        } else if (this.props.backgroundColor) {
             buttonStyle.push({backgroundColor: this.props.backgroundColor});
         }
         let img = <></>;
@@ -19,6 +22,7 @@ class CustomButton extends Component {
         }
         return (
             <TouchableNativeFeedback
+                disabled={disabled}
                 onPress={this.props.onPress}>
                 <View style={[buttonStyle, {flexDirection: 'row'}]}>
                     <View style={textViewStyle}>
