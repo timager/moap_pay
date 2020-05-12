@@ -1,4 +1,4 @@
-package com.moek_pay;
+package com.automer;
 
 import com.facebook.react.ReactActivity;
 
@@ -10,6 +10,6 @@ public class MainActivity extends ReactActivity {
    */
   @Override
   protected String getMainComponentName() {
-    return "moek_pay";
+    return "automer";
   }
 }

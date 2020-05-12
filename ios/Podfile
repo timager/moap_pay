@@ -44,8 +44,8 @@ def flipper_post_install(installer)
   end
 end
 
-target 'moek_pay' do
-  # Pods for moek_pay
+target 'automer' do
+  # Pods for automer
   pod 'FBLazyVector', :path => "../node_modules/react-native/Libraries/FBLazyVector"
   pod 'FBReactNativeSpec', :path => "../node_modules/react-native/Libraries/FBReactNativeSpec"
   pod 'RCTRequired', :path => "../node_modules/react-native/Libraries/RCTRequired"
@@ -80,7 +80,7 @@ target 'moek_pay' do
 
   pod 'react-native-image-base64', :path => '../node_modules/react-native-image-base64'
 
-  target 'moek_payTests' do
+  target 'automerTests' do
     inherit! :complete
     # Pods for testing
   end
@@ -97,10 +97,10 @@ target 'moek_pay' do
   end
 end
 
-target 'moek_pay-tvOS' do
-  # Pods for moek_pay-tvOS
+target 'automer-tvOS' do
+  # Pods for automer-tvOS
 
-  target 'moek_pay-tvOSTests' do
+  target 'automer-tvOSTests' do
     inherit! :search_paths
     # Pods for testing
   end
