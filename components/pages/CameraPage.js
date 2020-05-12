@@ -12,9 +12,19 @@ class CameraPage extends Component {
 
     constructor() {
         super();
+        this.statuses = [
+            "Наведите на счетчик и сделайте снимок",
+            "Ожидайте",
+            "Не удалось распознать"
+        ];
+        this.statusesStyles = [
+            styles.bgGrey,
+            styles.bgGrey,
+            styles.bgRed
+        ];
         this.state = {
             base64: null,
-            response: "Наведите на счетчик и сделайте снимок"
+            response: 0
         }
     }
 
@@ -37,15 +47,8 @@ class CameraPage extends Component {
                 <View style={styles.snapButton}>
                     <CustomButton onPress={this.takePicture.bind(this)} text={'Сделать снимок'} cameraImg={true}/>
                 </View>
-                {this.state.base64 ? <Image style={{
-                    width: Dimensions.get("window").width,
-                    height: Dimensions.get("window").width * 0.3,
-                    resizeMode: "center",
-                    borderWidth: 1,
-                    borderColor: 'red'
-                }} source={{uri: "data:image/jpeg;base64," + this.state.base64}}/> : <Text/>}
                 <View>
-                    <Text style={[styles.fetchStatusLabel, styles.bgGrey]}>{this.state.response}</Text>
+                    <Text style={[styles.fetchStatusLabel, this.statusesStyles[this.state.response]]}>{this.statuses[this.state.response]}</Text>
                 </View>
                 <View style={styles.containerCenter}>
                     <AplanaLogo/>
@@ -77,10 +80,12 @@ class CameraPage extends Component {
         }
     };
 
-    checkResult() {
-        let res = this.state.response.replace(/[^0-9]/g, '');
+    checkResult(result) {
+        let res = result.replace(/[^0-9]/g, '');
         if (res.length > 0) {
             this.props.navigation.navigate('ConfirmPage', {res: res})
+        }else{
+            this.setState({response: 2});
         }
     }
 
@@ -109,7 +114,7 @@ class CameraPage extends Component {
     }
 
     sendToApi() {
-        this.setState({response: 'loading'});
+        this.setState({response: 1});
         let body = JSON.stringify({
             "analyze_specs": [{
                 "content": this.state.base64,
@@ -140,7 +145,7 @@ class CameraPage extends Component {
             }
         )
             .then((response) => response.text())
-            .then((response) => this.setState({response: this.makeResponseStr(response)}, this.checkResult))//.results[0].results
+            .then((response) => this.checkResult(this.makeResponseStr(response)))//.results[0].results
     }
 }
 
