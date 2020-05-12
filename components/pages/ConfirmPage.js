@@ -7,8 +7,8 @@ import circle_ok from "../assets/circle_ok.png";
 
 class ConfirmPage extends Component {
 
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
             value: this.props.route.params.res
         };
@@ -18,8 +18,11 @@ class ConfirmPage extends Component {
         return (
             <View style={[styles.heightFull, styles.bgColor, styles.confirmPage]}>
                 <Text style={[styles.inputLabel, styles.colorGreen, {fontSize: 12}]}>Проверьте значение</Text>
-                <TextInput style={[styles.formInput, styles.colorGreen]}
-                           value={this.state.value}/>
+                <TextInput
+                    onChangeText={(text)=>{this.setState({value:text.replace(/[^0-9]/g, '')})}}
+                    keyboardType={"numeric"}
+                    style={[styles.formInput, styles.colorGreen]}
+                    value={this.state.value}/>
                 <CustomButton text={"Подтвердить"} onPress={() => this.props.navigation.navigate("HomePage")}/>
                 <View style={styles.confirmOkImage}>
                     <Image style={{width: 50, height: 50}} source={circle_ok}/>
