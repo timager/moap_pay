@@ -23,7 +23,7 @@ class App extends Component {
             title: "Наведите на счетчик",
             headerTintColor: 'white',
             headerStyle: {
-                height: Dimensions.get('window').height * 0.2,
+                // height: Dimensions.get('window').height * 0.2,
                 backgroundColor: 'green',
             },
         };

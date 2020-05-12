@@ -13,12 +13,13 @@ class ConfirmPage extends Component {
             value: this.props.route.params.res
         };
     }
+
     render() {
         return (
             <View style={[styles.heightFull, styles.bgColor, styles.confirmPage]}>
                 <Text style={[styles.inputLabel, styles.colorGreen, {fontSize: 12}]}>Проверьте значение</Text>
                 <TextInput style={[styles.formInput, styles.colorGreen]}
-                    value={this.state.value}/>
+                           value={this.state.value}/>
                 <CustomButton text={"Подтвердить"} onPress={() => this.props.navigation.navigate("HomePage")}/>
                 <View style={styles.confirmOkImage}>
                     <Image style={{width: 50, height: 50}} source={circle_ok}/>

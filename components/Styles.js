@@ -2,10 +2,27 @@ import {StyleSheet, Dimensions} from 'react-native';
 
 const lightBlue = '#d4d9ea';
 const green = '#2f9f43';
+const grey = 'rgba(127,127,127,0.4)';
 
 export let styles = StyleSheet.create(
     {
-        colorGreen:{
+        bgGrey: {
+            backgroundColor: grey
+        },
+        bgRed: {
+            backgroundColor: 'red'
+        },
+        fetchStatusLabel: {
+            textAlign: 'center',
+            color: 'white',
+            borderRadius: 30,
+            paddingLeft: 15,
+            paddingRight: 15,
+            paddingTop: 50,
+            paddingBottom: 50,
+            marginBottom: 50,
+        },
+        colorGreen: {
             color: green
         },
         cameraPage: {
@@ -80,7 +97,7 @@ export let styles = StyleSheet.create(
             marginBottom: 20,
             marginTop: 10,
             height: 50,
-            backgroundColor: 'rgba(127,127,127,0.4)',
+            backgroundColor: grey,
             color: 'white'
         },
         inputLabel: {

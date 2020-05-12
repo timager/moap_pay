@@ -14,7 +14,7 @@ class CameraPage extends Component {
         super();
         this.state = {
             base64: null,
-            response: "wait"
+            response: "Наведите на счетчик и сделайте снимок"
         }
     }
 
@@ -44,10 +44,9 @@ class CameraPage extends Component {
                     borderWidth: 1,
                     borderColor: 'red'
                 }} source={{uri: "data:image/jpeg;base64," + this.state.base64}}/> : <Text/>}
-
-                <ScrollView style={styles.h200}>
-                    <Text style={styles.bgColor}>{this.state.response}</Text>
-                </ScrollView>
+                <View>
+                    <Text style={[styles.fetchStatusLabel, styles.bgGrey]}>{this.state.response}</Text>
+                </View>
                 <View style={styles.containerCenter}>
                     <AplanaLogo/>
                 </View>
